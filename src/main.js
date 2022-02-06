@@ -4,9 +4,12 @@ let dateRanges = {
   oneDay: "1d",
   fiveDays: "5d",
   oneMonth: "1mo",
+  threeMonths: "3mo",
   sixMonths: "6mo",
   oneYear: "1y",
+  twoYears: "2y",
   fiveYears: "5y",
+  tenYears: "10y",
   yearToDay: "ytd",
   max: "max",
 };
@@ -23,6 +26,9 @@ async function fetchData(name, time) {
     case "1mo":
       interval = "1d";
       break;
+    case "3mo":
+      interval = "1d";
+      break;
     case "6mo":
       interval = "5d";
       break;
@@ -30,10 +36,16 @@ async function fetchData(name, time) {
       interval = "1h";
       break;
     case "1y":
-      interval = "1d";
+      interval = "5d";
+      break;
+    case "2y":
+      interval = "5d";
       break;
     case "5y":
-      interval = "1wk";
+      interval = "3mo";
+      break;
+    case "10y":
+      interval = "3mo";
       break;
     case "max":
       interval = "3mo";
