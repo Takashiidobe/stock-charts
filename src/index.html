@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Cryptocurrency Prices</title>
+  <meta name="description" content="Cryptocurrency Prices">
+
+  <meta property="og:title" content="Cryptocurrency Prices">
+</head>
+
+<body>
+<h1>Stock Prices</h1>
+
+<label for="stock">Stock Ticker to View:</label>
+
+<input type="text" id="stock"></input>
+
+<label for="time">Time Period:</label>
+
+<select id="time">
+  <option value="oneDay">1D</option>
+  <option value="fiveDays">5D</option>
+  <option value="oneMonth">1M</option>
+  <option value="sixMonths">6M</option>
+  <option value="oneYear">1Y</option>
+  <option value="fiveYears">5Y</option>
+  <option value="yearToDay">YTD</option>
+  <option value="max">Max</option>
+</select>
+
+<canvas id="myChart"></canvas>
+<script src="./chart.min.js"></script>
+
+<script type="module" src="main.js"></script>
+</body>
+</html>
+
