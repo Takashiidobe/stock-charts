@@ -51,7 +51,6 @@ async function fetchData(name, time) {
       interval = "3mo";
       break;
   }
-  console.log(name, time, interval);
   try {
     let str = `https://cors-anywhere.takashiidobe.com/https://query1.finance.yahoo.com/v8/finance/chart/${name}?region=US&lang=en-US&includePrePost=false&interval=${interval}&useYfid=true&range=${time}&corsDomain=finance.yahoo.com&.tsrc=finance`;
     const response = await fetch(str, headers);
@@ -65,7 +64,9 @@ async function fetchData(name, time) {
 async function updateChart(name, time) {
   let data = await fetchData(name, dateRanges[time]);
   const dates = data.chart.result[0].timestamp.map((x) =>
-    new Date(x * 1000).toLocaleDateString()
+    dateRanges[time] == "1d"
+      ? new Date(x * 1000).toLocaleTimeString()
+      : new Date(x * 1000).toLocaleDateString()
   );
   const prices = data.chart.result[0].indicators.quote[0].close;
 
