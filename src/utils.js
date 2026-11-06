@@ -71,48 +71,14 @@ export function replaceState(params) {
 }
 
 export async function fetchData(name, time) {
-  let interval = "1d";
-  switch (time) {
-    case "1d":
-      interval = "5m";
-      break;
-    case "5d":
-      interval = "15m";
-      break;
-    case "1mo":
-      interval = "1d";
-      break;
-    case "3mo":
-      interval = "1d";
-      break;
-    case "6mo":
-      interval = "5d";
-      break;
-    case "ytd":
-      interval = "1h";
-      break;
-    case "1y":
-      interval = "5d";
-      break;
-    case "2y":
-      interval = "5d";
-      break;
-    case "5y":
-      interval = "3mo";
-      break;
-    case "10y":
-      interval = "3mo";
-      break;
-    case "max":
-      interval = "3mo";
-      break;
-  }
   try {
-    let str = `https://cors-anywhere.takashiidobe.com/https://query1.finance.yahoo.com/v8/finance/chart/${name}?region=US&lang=en-US&includePrePost=false&interval=${interval}&useYfid=true&range=${time}&corsDomain=finance.yahoo.com&.tsrc=finance`;
-    const response = await fetch(str);
+    const params = new URLSearchParams({ symbol: name, range: time });
+    const response = await fetch(`/.netlify/functions/chart?${params}`);
     const data = await response.json();
+    if (!response.ok) throw new Error(data.error || "Unable to load chart data");
     return data;
   } catch (error) {
     console.error(error);
+    throw error;
   }
 }

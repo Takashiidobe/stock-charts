@@ -1,0 +1,1 @@
+{"functions":[{"bundler":"zisi","buildData":{"runtimeAPIVersion":1},"mainFile":"/home/takashi/Projects/stock-charts/netlify/functions/chart.js","name":"chart","priority":10,"path":"/home/takashi/Projects/stock-charts/.netlify/functions/chart.zip","runtime":"js"}],"system":{"arch":"x64","platform":"linux"},"timestamp":1793923260860,"version":1}
