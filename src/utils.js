@@ -43,9 +43,37 @@ export async function updateChart(name, time) {
         {
           label: `${name} Price`,
           data: prices,
-          borderWidth: 1,
+          borderColor: "#2563eb",
+          backgroundColor: "rgba(37, 99, 235, 0.12)",
+          borderWidth: 2.5,
+          pointRadius: 0,
+          pointHoverRadius: 4,
         },
       ],
+    },
+    options: {
+      responsive: true,
+      interaction: { intersect: false, mode: "index" },
+      plugins: {
+        legend: { labels: { color: "#333" } },
+        tooltip: {
+          backgroundColor: "#222",
+          titleColor: "#fff",
+          bodyColor: "#fff",
+        },
+      },
+      scales: {
+        x: {
+          ticks: { color: "#444" },
+          grid: { color: "rgba(0, 0, 0, 0.08)" },
+          border: { color: "#888" },
+        },
+        y: {
+          ticks: { color: "#444" },
+          grid: { color: "rgba(0, 0, 0, 0.1)" },
+          border: { color: "#888" },
+        },
+      },
     },
   });
 }
